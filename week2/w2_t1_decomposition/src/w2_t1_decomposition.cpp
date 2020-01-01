@@ -137,6 +137,7 @@ public:
 				}
 			}
 		}
+		return res;
 	}
 
 	AllBusesResponse GetAllBuses() const {
