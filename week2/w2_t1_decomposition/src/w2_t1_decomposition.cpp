@@ -57,6 +57,7 @@ ostream& operator <<(ostream &os, const BusesForStopResponse &r) {
 	for (const string &b : r.buses_this_stop) {
 		os << b << " ";
 	}
+	os << endl;
 	return os;
 }
 
@@ -67,7 +68,7 @@ struct StopsForBusResponse {
 
 ostream& operator <<(ostream &os, const StopsForBusResponse &r) {
 	if (r.stops.size() == 0) {
-		cout << "No bus";
+		os << "No bus" << endl;
 		return os;
 	}
 	for (const string &stop : r.stops) {
@@ -90,7 +91,7 @@ struct AllBusesResponse {
 
 ostream& operator <<(ostream &os, const AllBusesResponse &r) {
 	if (r.buses.empty()) {
-		os << "No buses";
+		os << "No buses" << endl;
 		return os;
 	}
 
@@ -170,13 +171,13 @@ int main() {
 			bm.AddBus(q.bus, q.stops);
 			break;
 		case QueryType::BusesForStop:
-			cout << bm.GetBusesForStop(q.stop) << endl;
+			cout << bm.GetBusesForStop(q.stop);
 			break;
 		case QueryType::StopsForBus:
-			cout << bm.GetStopsForBus(q.bus) << endl;
+			cout << bm.GetStopsForBus(q.bus);
 			break;
 		case QueryType::AllBuses:
-			cout << bm.GetAllBuses() << endl;
+			cout << bm.GetAllBuses();
 			break;
 		}
 	}
