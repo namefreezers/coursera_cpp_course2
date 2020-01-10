@@ -20,6 +20,8 @@ string ParseEvent(istream &is) {
 void TestAll();
 
 int main() {
+	Entry e(1, 2);
+
 	TestAll();
 
 	Database db;

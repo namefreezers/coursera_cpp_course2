@@ -24,3 +24,5 @@ istream& operator>>(istream &stream, Date &d);
 ostream& operator<<(ostream &stream, const Date &d);
 
 bool operator<(const Date &lhs, const Date &rhs);
+
+Date ParseDate(istream &is);

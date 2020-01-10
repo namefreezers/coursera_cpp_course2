@@ -72,3 +72,9 @@ ostream& operator<<(ostream &stream, const Date &d) {
 bool operator<(const Date &lhs, const Date &rhs) {
 	return lhs.GetComparable() < rhs.GetComparable();
 }
+
+Date ParseDate(istream &is) {
+	Date d;
+	is >> d;
+	return d;
+}
