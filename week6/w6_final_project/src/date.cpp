@@ -4,6 +4,10 @@ using namespace std;
 
 #include "date.h"
 
+Date::Date(int new_year, int new_month, int new_day) {
+	SetDate(new_year, new_month, new_day);
+}
+
 int Date::GetYear() const {
 	return year;
 }
@@ -71,6 +75,26 @@ ostream& operator<<(ostream &stream, const Date &d) {
 
 bool operator<(const Date &lhs, const Date &rhs) {
 	return lhs.GetComparable() < rhs.GetComparable();
+}
+
+bool operator<=(const Date &lhs, const Date &rhs) {
+	return lhs.GetComparable() <= rhs.GetComparable();
+}
+
+bool operator>(const Date &lhs, const Date &rhs) {
+	return lhs.GetComparable() > rhs.GetComparable();
+}
+
+bool operator>=(const Date &lhs, const Date &rhs) {
+	return lhs.GetComparable() >= rhs.GetComparable();
+}
+
+bool operator==(const Date &lhs, const Date &rhs) {
+	return lhs.GetComparable() == rhs.GetComparable();
+}
+
+bool operator!=(const Date &lhs, const Date &rhs) {
+	return lhs.GetComparable() != rhs.GetComparable();
 }
 
 Date ParseDate(istream &is) {

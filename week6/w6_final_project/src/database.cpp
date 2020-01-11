@@ -8,6 +8,7 @@ using namespace std;
 
 #include "database.h"
 #include "date.h"
+#include "entry.h"
 
 void Database::Add(const Date &d, const string &event) {
 	if (db_if_contains[d].count(event) != 0) {
@@ -38,7 +39,7 @@ int Database::RemoveIf(Pred pred) {
 		events.erase(end_not_removed, events.end());
 	}
 
-	// clear db (linear)
+	// clear db_if_contains (linear)
 	for (const pair<Date, set<string>> &date_events_set : db_if_contains) {
 		Date date = date_events_set.first;
 		set<string> events_set = date_events_set.second;
@@ -56,20 +57,22 @@ int Database::RemoveIf(Pred pred) {
 }
 
 template<typename Pred>
-vector<pair<Date, string>> Database::FindIf(Pred pred) {
-
+vector<Entry<Date, string>> Database::FindIf(Pred pred) {
+	vector<Entry<Date, string>> res;
+	for (const auto& [date, events] : db) {
+		auto end_not_removed = copy_if(events.begin(), events.end(), back_inserter(res),
+				[&pred, &date](const string &event) {
+			return pred(date, event);
+		});
+	}
 }
 
-template<typename T1, typename T2>
-Entry<T1, T2>::Entry(const T1 &new_v1, const T2 &new_v2) : v1(new_v1), v2(new_v2) { }
-
-template<typename T1, typename T2>
-T1 Entry<T1, T2>::Get_v1() const {
-	return v1;
-}
-
-template<typename T1, typename T2>
-T2 Entry<T1, T2>::Get_v2() const {
-	return v2;
+Entry<Date, string> Database::Last(const Date& d) {
+	auto it = db.upper_bound(d);
+	if (it == db.begin()) {
+		throw invalid_argument("");
+	}
+	--it;
+	return Entry<Date, string>(it->first, it->second[it->second.size() - 1]);
 }
 

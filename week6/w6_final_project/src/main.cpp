@@ -1,6 +1,7 @@
 #include "database.h"
 #include "date.h"
 #include "condition_parser.h"
+#include "entry.h"
 #include "node.h"
 #include "test_runner.h"
 
@@ -20,8 +21,6 @@ string ParseEvent(istream &is) {
 void TestAll();
 
 int main() {
-	Entry e(1, 2);
-
 	TestAll();
 
 	Database db;

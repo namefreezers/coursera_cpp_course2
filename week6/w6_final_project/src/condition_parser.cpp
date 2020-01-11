@@ -5,6 +5,7 @@ using namespace std;
 
 #include "condition_parser.h"
 #include "date.h"
+#include "node.h"
 #include "token.h"
 
 template<class It> shared_ptr<Node> ParseComparison(It &current, It end) {
