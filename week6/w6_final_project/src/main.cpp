@@ -13,6 +13,10 @@
 using namespace std;
 
 string ParseEvent(istream &is) {
+	while (is.peek() == ' ') {
+		is.get();
+	}
+
 	string s;
 	getline(is, s);
 	return s;

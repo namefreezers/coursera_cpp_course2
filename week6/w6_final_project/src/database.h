@@ -17,15 +17,24 @@ public:
 
 	template<typename Pred>
 	int RemoveIf(Pred pred) {
-		int res;
+		size_t res = 0;
 
 		// clear db (linear). Elements order is preserved
-		for (auto& [date, events] : db) {
+		for (map<Date, vector<string>>::iterator db_it = db.begin(); db_it != db.end(); ) {
+			Date date = db_it->first;
+			vector<string> events = db_it->second;
+
 			auto end_not_removed = remove_if(events.begin(), events.end(), [&pred, &date](const string &event) {
 				return pred(date, event);
 			});
-			res = events.end() - end_not_removed;
-			events.erase(end_not_removed, events.end());
+			res += events.end() - end_not_removed;
+
+			if (res == events.size()) {  // then remove entire vector
+				db_it = db.erase(db_it);  // remove pair < date, vector >, and assign next date
+			} else {  // else erase deleted elements from vector
+				events.erase(end_not_removed, events.end());
+				++db_it;  // next date
+			}
 		}
 
 		// clear db_if_contains (linear)
