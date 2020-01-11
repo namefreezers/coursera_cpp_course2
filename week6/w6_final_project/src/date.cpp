@@ -4,6 +4,8 @@ using namespace std;
 
 #include "date.h"
 
+Date::Date() { }
+
 Date::Date(int new_year, int new_month, int new_day) {
 	SetDate(new_year, new_month, new_day);
 }
