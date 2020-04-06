@@ -93,28 +93,33 @@ private:
 	int fail_count = 0;
 };
 
-bool IsPalindrom(const string &str) {
-	for (size_t i = 0; i < str.size() / 2; i++) {
-		if (str[i] != str[str.size() - 1 - i]) {
-			return false;
-		}
-	}
-	return true;
-}
+//bool IsPalindrom(const string &str) {
+//	for (size_t i = 0; i < str.size() / 2; i++) {
+//		if (str[i] != str[str.size() - 1 - i]) {
+//			return false;
+//		}
+//	}
+//	return true;
+//}
 
 void test1_true() {
-	AssertEqual(IsPalindrom("madam"), true, "1111111111");
+	AssertEqual(IsPalindrom(""), true, "1111111111");
 	AssertEqual(IsPalindrom("a"), true, "22222222222");
 	AssertEqual(IsPalindrom(" "), true, "333333333333");
-	AssertEqual(IsPalindrom("maddam"), true, "44444444444");
-	AssertEqual(IsPalindrom("mm"), true, "5555555555555");
-	AssertEqual(IsPalindrom("wasitacaroracatisaw"), true, "66666666666666");
+	AssertEqual(IsPalindrom("mm"), true, "44444444444");
+	AssertEqual(IsPalindrom("mam"), true, "44444444444");
+	AssertEqual(IsPalindrom("madam"), true, "5555555555");
+	AssertEqual(IsPalindrom("maddam"), true, "666666666666");
+	AssertEqual(IsPalindrom("wasitacaroracatisaw"), true, "777777777777");
 }
 
 void test2_false() {
 	AssertEqual(IsPalindrom("amadam"), false);
+	AssertEqual(IsPalindrom("amadamb"), false);
+	AssertEqual(IsPalindrom("amadam "), false);
 	AssertEqual(IsPalindrom("madama"), false);
 	AssertEqual(IsPalindrom("ma dam"), false);
+	AssertEqual(IsPalindrom("ma  dam"), false);
 	AssertEqual(IsPalindrom("mmdamm"), false);
 	AssertEqual(IsPalindrom("mmdaamm"), false);
 	AssertEqual(IsPalindrom("  madam"), false);

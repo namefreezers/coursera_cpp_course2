@@ -3,8 +3,6 @@
 using namespace std;
 
 int main() {
-	cout << "A";
-
 	int N;
 	int R;
 	cin >> N >> R;

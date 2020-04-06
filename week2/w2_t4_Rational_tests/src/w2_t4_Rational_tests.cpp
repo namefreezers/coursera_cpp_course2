@@ -93,54 +93,54 @@ private:
 	int fail_count = 0;
 };
 
-class Rational {
-public:
-	Rational() {
-		num = 0;
-		denom = 1;
-	}
-
-	Rational(int numerator, int denominator) {
-		change(numerator, denominator);
-	}
-
-	int Numerator() const {
-		return num;
-	}
-
-	int Denominator() const {
-		return denom;
-	}
-
-private:
-	void change(int numerator, int denominator) {
-		int gcd = GCD_euclid(numerator, denominator);
-		numerator /= gcd;
-		denominator /= gcd;
-		if (denominator < 0) {
-			numerator = -numerator;
-			denominator = -denominator;
-		}
-		num = numerator;
-		denom = denominator;
-	}
-
-	int GCD_euclid(int a, int b) {
-		a = abs(a);
-		b = abs(b);
-		while (a > 0 && b > 0) {
-			if (a > b) {
-				a = a % b;
-			} else {
-				b = b % a;
-			}
-		}
-		return a + b;
-	}
-
-	int num;
-	int denom;
-};
+//class Rational {
+//public:
+//	Rational() {
+//		num = 0;
+//		denom = 1;
+//	}
+//
+//	Rational(int numerator, int denominator) {
+//		change(numerator, denominator);
+//	}
+//
+//	int Numerator() const {
+//		return num;
+//	}
+//
+//	int Denominator() const {
+//		return denom;
+//	}
+//
+//private:
+//	void change(int numerator, int denominator) {
+//		int gcd = GCD_euclid(numerator, denominator);
+//		numerator /= gcd;
+//		denominator /= gcd;
+//		if (denominator < 0) {
+//			numerator = -numerator;
+//			denominator = -denominator;
+//		}
+//		num = numerator;
+//		denom = denominator;
+//	}
+//
+//	int GCD_euclid(int a, int b) {
+//		a = abs(a);
+//		b = abs(b);
+//		while (a > 0 && b > 0) {
+//			if (a > b) {
+//				a = a % b;
+//			} else {
+//				b = b % a;
+//			}
+//		}
+//		return a + b;
+//	}
+//
+//	int num;
+//	int denom;
+//};
 
 void test1_default_constr() {
 	Rational r;
