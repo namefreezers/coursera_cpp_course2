@@ -24,6 +24,11 @@ void second_task() {
 	cin >> first_num >> amount_ops;
 	ss << first_num;
 
+	if (amount_ops == 0) {
+		cout << ss.str();
+		return;
+	}
+
 	int amount_brackets = 0;
 	char prev_op, op;
 	int num;

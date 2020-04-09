@@ -6,10 +6,15 @@ using namespace std;
 
 template<typename T>
 vector<T> FindGreaterElements(const set<T> &elements, const T &border) {
-	vector<T> res;
-	copy(elements.upper_bound(border), elements.end(), back_inserter(res));
-	return res;
+	return { elements.upper_bound(border), elements.end() };
 }
+
+//template<typename T>
+//vector<T> FindGreaterElements(const set<T>& elements, const T& border) {
+//	vector<T> res;
+//	copy(elements.upper_bound(border), elements.end(), back_inserter(res));
+//	return res;
+//}
 
 int main() {
 	for (int x : FindGreaterElements(set<int> { 1, 5, 7, 8 }, 5)) {

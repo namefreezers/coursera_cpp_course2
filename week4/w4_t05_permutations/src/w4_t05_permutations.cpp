@@ -20,9 +20,8 @@ int main() {
 	}
 
 	prev_permutation(begin(v), end(v));
-	print_v(v);
-	while(prev_permutation(begin(v), end(v))) {
+	do {
 		print_v(v);
-	}
+	} while (prev_permutation(begin(v), end(v)));
 	return 0;
 }
