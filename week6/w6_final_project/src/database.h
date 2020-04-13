@@ -1,3 +1,5 @@
+#pragma once
+
 #include <algorithm>
 #include <iostream>
 #include <map>
@@ -13,10 +15,10 @@ class Database {
 public:
 	void Add(const Date &d, const string &event);
 
-	void Print(ostream &os);
+	void Print(ostream &os) const;
 
 	template<typename Pred>
-	int RemoveIf(Pred pred) {
+	size_t RemoveIf(Pred pred) {
 		size_t res = 0;
 
 		// clear db (linear). Elements order is preserved

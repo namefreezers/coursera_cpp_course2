@@ -18,7 +18,7 @@ void Database::Add(const Date &d, const string &event) {
 	db[d].push_back(event);
 }
 
-void Database::Print(ostream &os) {
+void Database::Print(ostream &os) const {
 	for (const auto& [date, events] : db) {
 		for (const string &event : events) {
 			os << date << ' ' << event << '\n';
