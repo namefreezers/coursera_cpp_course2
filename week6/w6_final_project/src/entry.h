@@ -23,3 +23,13 @@ template<typename T1, typename T2>
 ostream& operator<<(ostream &stream, const Entry<T1, T2> &d) {
 	return stream << d.Get_v1() << " " << d.Get_v2();
 }
+
+template<typename T1, typename T2>
+bool operator==(const Entry<T1, T2>& lhs, const Entry<T1, T2>& rhs) {
+	return lhs.Get_v1() == rhs.Get_v1() && lhs.Get_v2() == rhs.Get_v2();
+}
+
+template<typename T1, typename T2, typename T3, typename T4>
+bool operator!=(const Entry<T1, T2>& lhs, const Entry<T3, T4>& rhs) {
+	return lhs.Get_v1() != rhs.Get_v1() || lhs.Get_v2() != rhs.Get_v2();
+}

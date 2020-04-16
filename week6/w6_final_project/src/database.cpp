@@ -26,12 +26,12 @@ void Database::Print(ostream &os) const {
 	}
 }
 
-Entry<Date, string> Database::Last(const Date& d) {
+Entry<Date, string> Database::Last(const Date& d) const {
 	auto it = db.upper_bound(d);
 	if (it == db.begin()) {
 		throw invalid_argument("");
 	}
 	--it;
-	return Entry<Date, string>(it->first, it->second[it->second.size() - 1]);
+	return Entry<Date, string>(it->first, it->second.back());
 }
 

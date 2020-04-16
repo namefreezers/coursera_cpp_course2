@@ -5,6 +5,8 @@
 #include "node.h"
 #include "test_runner.h"
 
+#include "test_db.h"
+
 #include <iostream>
 #include <stdexcept>
 #include <string>
