@@ -15,7 +15,7 @@ public:
 
     virtual string Who() const = 0;
 
-    string GetName() const {
+    const string& GetName() const {
         return Name;
     }
 
